@@ -10,7 +10,20 @@
 <body>
     <h1>Etch-a-Sketch</h1>
 
-    <div id="grid-container"></div>
+    <div class="wrapper">
+        <div class="color-selection">
+            <p>
+                Select color:
+                <input type="color" name="color" id="color-select" value="#ff0000">
+            </p>
+            <p>
+                Let's get creative!
+                <input type="checkbox" name="random-color-checkbox" id="random-color-checkbox">
+            </p>
+        </div>
+
+        <div id="grid-container"></div>        
+    </div>
 
     <script src="script.js"></script>
 </body>
