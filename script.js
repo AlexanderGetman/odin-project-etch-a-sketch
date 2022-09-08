@@ -7,7 +7,7 @@ var color = "#ff0000";
 
 document.querySelector("#color-select").onchange = e => {
     color = e.target.value;
- }
+}
 
 for (var i = 0; i < squaresHorizontal * squaresVertical; i++) {
     var square = document.createElement("div");
@@ -37,15 +37,33 @@ document.addEventListener('mousedown', function(){
     trigger = true;
 });
 
-function change() {
-    color = "#" + Math.floor(Math.random()*16777215).toString(16);
-}
+var timer;
+var randomColorCheckbox = document.getElementById('random-color-checkbox');
+var randomColorStatus = null;
 
-var checkbox = document.getElementById('random-color-checkbox');
-
-checkbox.addEventListener('change', () => {
-    if (checkbox.checked) {
-        change();
-        setInterval(change, 100);
+randomColorCheckbox.addEventListener('change', () => {
+    function change() {
+        color = "#" + Math.floor(Math.random()*16777215).toString(16);        
     }
+
+    if (randomColorCheckbox.checked) {
+        change();
+        timer = setInterval(change, 100);        
+    }
+
+    if (randomColorCheckbox.checked == false) {        
+        clearInterval(timer);
+        document.querySelector("#color-select").value = color;
+        document.querySelector("#color-select").onchange = e => {
+            color = e.target.value;
+        }
+    }
+});
+
+var clearButton = document.getElementById('clear-button');
+
+clearButton.addEventListener('click', () => {
+    squares.forEach((item) => {
+        item.style.backgroundColor = "white";
+    })
 });
