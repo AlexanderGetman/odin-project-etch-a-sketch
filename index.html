@@ -17,15 +17,21 @@
                 <input type="color" name="color" id="color-select" value="#ff0000">
             </p>
             <p class="change-colors">
-                Let's get creative!
+                Rainbow mode:
                 <input type="checkbox" name="random-color-checkbox" id="random-color-checkbox">
             </p>
             <p>
                 <button type="button" name="clear-button" id="clear-button">Clear grid</button>
             </p>
+            <p>
+                Number of rows: <span id="number-of-rows"></span>
+                <div id="slider-container">
+                    <input type="range" name="slider" id="slider" min="16" max="64">
+                </div>
+            </p>
         </div>
 
-        <div id="grid-container"></div>        
+        <div id="grid-container"></div>
     </div>
 
     <script src="script.js"></script>
