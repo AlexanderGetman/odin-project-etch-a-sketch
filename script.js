@@ -58,21 +58,11 @@ function paint() {
 
 paint();
 
-function paintWithTouch() {
-    squares.forEach((item) => {
-        item.addEventListener('touchstart', () => {
-            if (trigger === true) {
-                item.style.backgroundColor = color;                
-            }
-        }, {passive: true})
-    
-        item.addEventListener('touchmove', () => {
-            item.style.backgroundColor = color;            
-        }, {passive: true})
-    })
+function onStart (touchEvent) {
+    if(navigator.userAgent.match(/Android/i)) {
+    touchEvent.preventDefault();
+    }
 }
-
-paintWithTouch();
 
 document.querySelector("#color-select").onchange = e => {
     color = e.target.value;
@@ -89,7 +79,6 @@ slider.addEventListener('change', () => {
     squares = document.querySelectorAll(".square");
 
     paint();
-    paintWithTouch();
 
     document.getElementById("number-of-rows").textContent = numberOfRows;
 })
@@ -99,14 +88,6 @@ document.addEventListener('mouseup', function(){
 });
 
 document.addEventListener('mousedown', function(){
-    trigger = true;
-});
-
-document.addEventListener('touchend', function(){
-    trigger = false;
-});
-
-document.addEventListener('touchmove', function(){
     trigger = true;
 });
 
