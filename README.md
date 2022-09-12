@@ -1,1 +1,1 @@
-# odin-project-etch-a-sketch
+Project for [TOP: Etch-A-Sketch](https://www.theodinproject.com/lessons/foundations-etch-a-sketch)
