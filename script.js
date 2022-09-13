@@ -35,7 +35,8 @@ if (mobileCheck()) {
     
     numberOfRows = 16;
     width = screen.width;
-    document.getElementById("grid-container").style.width = width + "px";    
+    document.getElementById("grid-container").style.width = width + "px";
+    document.body.style.paddingBottom = '50px';
 }
 
 buildGrid();
