@@ -56,7 +56,39 @@ function paint() {
     })
 }
 
+function paintOnMobile() {
+    function clearAll() {
+        trigger = true;        
+    }
+
+    function select(e) {
+        e.preventDefault();
+        if (trigger) {
+            var changedTouch = e.changedTouches[0];
+            var elem = document.elementFromPoint(changedTouch.clientX, changedTouch.clientY);
+            if (elem.className === 'square') {
+                elem.style.backgroundColor = color;
+            }
+        }
+    }
+
+    function reset() {
+        trigger = false;
+    }
+
+    function start() {
+        for (var i = 0; i < squares.length; i++) {
+            squares[i].addEventListener("touchstart", clearAll, {passive: false});
+            squares[i].addEventListener("touchmove", select, {passive: false});
+            squares[i].addEventListener("touchend", reset, {passive: false});
+        }
+    }
+
+    start();
+}
+
 paint();
+paintOnMobile();
 
 function onStart (touchEvent) {
     if(navigator.userAgent.match(/Android/i)) {
@@ -79,6 +111,7 @@ slider.addEventListener('change', () => {
     squares = document.querySelectorAll(".square");
 
     paint();
+    paintOnMobile();
 
     document.getElementById("number-of-rows").textContent = numberOfRows;
 })
